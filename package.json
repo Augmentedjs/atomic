@@ -1,0 +1,29 @@
+{
+  "name": "atomic",
+  "version": "0.0.1",
+  "description": "Simple Experiment Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node ./test --verbose",
+    "build": "browserify index.js -o bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/augmentedjs/atomic.git"
+  },
+  "keywords": [
+    "experiment",
+    "ES6"
+  ],
+  "author": "Bob Warren <jedi.master@augmentedjs.com> (http://www.augmentedjs.com)",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "jasmine-node": "^2.0.0",
+    "browserify": "^14.5.0"
+  },
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/augmentedjs/atomic/issues"
+  },
+  "homepage": "http://www.augmentedjs.com"
+}
