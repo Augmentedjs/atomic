@@ -5,8 +5,16 @@ const CONSTANTS = {
   "TEMPLATE": "<p>This is a view!</p>"
 };
 
+const MYCONSTANTS = {
+  "NAME": "Karen",
+  "TEMPLATE": "<span>This is a span tag.</span>"
+}
+
 const myView = new View(CONSTANTS.NAME, "body", CONSTANTS.TEMPLATE);
 myView.render();
+
+const myOtherView = new View(MYCONSTANTS.NAME, "body", MYCONSTANTS.TEMPLATE);
+myOtherView.render();
 
 },{"./view.js":2}],2:[function(require,module,exports){
 "use strict";
@@ -16,6 +24,7 @@ class View {
     this._name = (name) ? name : "my-view";
     this._el = el;
     this._template = template;
+    console.log(this._name, this._el, this._template);
   };
   /**
   * The name property of the view
@@ -44,7 +53,7 @@ class View {
   render() {
     const el = document.querySelector(this._el);
     if (el && this._template) {
-      el.innerHTML = this._template;
+      el.insertAdjacentHTML('beforeend', this._template);
     }
     return this;
   };
