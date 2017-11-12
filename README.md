@@ -1,5 +1,5 @@
 # atomic
-Framework experiment 
+Framework experiment
 
 To run the test suite run:
 *npm test*
@@ -7,4 +7,4 @@ To run the test suite run:
 To build the bundle file run:
 *npm run build*
 
-To see the view in the browser opne index.html in any browser.
+To see the view in the browser opens index.html in any browser.
