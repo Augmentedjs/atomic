@@ -7,4 +7,4 @@ To run the test suite run:
 To build the bundle file run:
 *npm run build*
 
-To see the view in the browser opens index.html in any browser.
+To see the view in the browser, open index.html in any browser.
