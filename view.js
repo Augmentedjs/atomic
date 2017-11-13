@@ -5,7 +5,6 @@ class View {
     this._name = (name) ? name : "my-view";
     this._el = el;
     this._template = template;
-    console.log(this._name, this._el, this._template);
   };
   /**
   * The name property of the view
@@ -34,7 +33,8 @@ class View {
   render() {
     const el = document.querySelector(this._el);
     if (el && this._template) {
-      el.insertAdjacentHTML('beforeend', this._template);
+      //el.insertAdjacentHTML('beforeend', this._template);
+      el.innerHTML = this._template;
     }
     return this;
   };

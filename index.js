@@ -1,16 +1,15 @@
 const View = require("./view.js");
-const CONSTANTS = {
-  "NAME": "Bob",
-  "TEMPLATE": "<p>This is a view!</p>"
-};
+const List = require("./list.js");
 
-const MYCONSTANTS = {
+const CONSTANTS = {
   "NAME": "Karen",
   "TEMPLATE": "<span>This is a span tag.</span>"
 }
 
-const myView = new View(CONSTANTS.NAME, "body", CONSTANTS.TEMPLATE);
-myView.render();
+const list_arr = ["oranges", "apples", "kiwis"];
 
-const myOtherView = new View(MYCONSTANTS.NAME, "body", MYCONSTANTS.TEMPLATE);
-myOtherView.render();
+const myView = new View(CONSTANTS.NAME, 'body', CONSTANTS.TEMPLATE);
+const myList = new List("Karen's List", 'body', list_arr);
+
+myView.render();
+myList.createList();
