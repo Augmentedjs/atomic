@@ -1,14 +1,48 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 const View = require("./view.js");
+const List = require("./list.js");
+
 const CONSTANTS = {
-  "NAME": "Bob",
-  "TEMPLATE": "<p>This is a view!</p>"
+  "NAME": "Karen",
+  "TEMPLATE": "<span>This is a span tag.</span>"
+}
+
+const list_arr = ["oranges", "apples", "kiwis"];
+
+const myView = new View(CONSTANTS.NAME, 'body', CONSTANTS.TEMPLATE);
+const myList = new List("Karen's List", 'body', list_arr);
+
+myView.render();
+myList.createList();
+
+},{"./list.js":2,"./view.js":3}],2:[function(require,module,exports){
+"use strict";
+const View = require("./view.js");
+
+class List extends View {
+  constructor(name, el, template) {
+    super(name, el, template);
+  };
+
+  createList() {
+    const item_array = this._template;
+    const list = document.createElement("ul");
+    const el = document.querySelector(this._el);
+    let i;
+
+    for(i = 0; i < item_array.length; i++) {
+      let item = document.createElement("li");
+      item.append(item_array[i]);
+      list.append(item);
+    }
+    el.append(list);
+  };
+
 };
 
-const myView = new View(CONSTANTS.NAME, "body", CONSTANTS.TEMPLATE);
-myView.render();
+module.exports = List;
 
-},{"./view.js":2}],2:[function(require,module,exports){
+},{"./view.js":3}],3:[function(require,module,exports){
 "use strict";
 
 class View {
@@ -44,6 +78,7 @@ class View {
   render() {
     const el = document.querySelector(this._el);
     if (el && this._template) {
+      //el.insertAdjacentHTML('beforeend', this._template);
       el.innerHTML = this._template;
     }
     return this;
