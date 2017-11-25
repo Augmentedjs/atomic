@@ -2,8 +2,8 @@
 const View = require("./view.js");
 
 class List extends View {
-  constructor(name, el, template) {
-    super(name, el, template);
+  constructor(name, el, template) { //pass in list instead of template
+    super(name, el, template); //no need to pass template you will remove and change. Use ""
   };
 
   createList() {
