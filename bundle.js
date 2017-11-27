@@ -12,10 +12,10 @@ const list_arr2 = ["oranges", "grapes", "kiwis"];
 
 const myView = new View(CONSTANTS.NAME, 'body', CONSTANTS.TEMPLATE);
 const myList = new List("Karen's List", 'body', list_arr);
-const myList2 = new List("Another List", 'body', list_arr2);
+//const myList2 = new List("Another List", 'body', list_arr2);
 
 myView.render();
-myList.add();
+myList.add('peanuts', 'ul');
 //myList.createList();
 //myList2.createList();
 
@@ -53,12 +53,18 @@ class List extends View {
   };
 
   _refresh(list_type) {
-    this._template = "<${list_type}>";
+
+    const el = document.querySelector(this._el);
+    let i = 0;
+
+    this._template = "<" + list_type + ">";
+
     for(i = 0; i < this._list.length; i++) {
-      this._template += "<li>${this._list[i]}</li>";
+      this._template += "<li>" + this._list[i] + "</li>";
     }
-    this._template += "</${list_type}>";
-    this._el.append = this._template;
+
+    this._template += "</" + list_type + ">";
+    el.insertAdjacentHTML('beforeend', this._template);
   }
 
   /* hint 2 :)
