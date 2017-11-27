@@ -8,35 +8,55 @@ const CONSTANTS = {
 }
 
 const list_arr = ["oranges", "apples", "kiwis"];
+const list_arr2 = ["oranges", "grapes", "kiwis"];
 
 const myView = new View(CONSTANTS.NAME, 'body', CONSTANTS.TEMPLATE);
 const myList = new List("Karen's List", 'body', list_arr);
+const myList2 = new List("Another List", 'body', list_arr2);
 
 myView.render();
-myList.createList();
+myList.add();
+//myList.createList();
+//myList2.createList();
 
 },{"./list.js":2,"./view.js":3}],2:[function(require,module,exports){
 "use strict";
 const View = require("./view.js");
 
 class List extends View {
-  constructor(name, el, template) {
-    super(name, el, template);
+  constructor(name, el, list) { //pass in list instead of template
+    super(name, el, ""); //no need to pass template you will remove and change. Use ""
+    this._list = list;
   };
 
-  createList() {
-    const item_array = this._template;
-    const list = document.createElement("ul");
-    const el = document.querySelector(this._el);
-    let i;
-
-    for(i = 0; i < item_array.length; i++) {
-      let item = document.createElement("li");
-      item.append(item_array[i]);
-      list.append(item);
-    }
-    el.append(list);
+  add() {
+    list(['apples','orange']);
+    console.log(list);
   };
+
+  set list(list) {
+    this._list = list;
+  };
+
+  get list() {
+    return this._list;
+  };
+
+  // createList() {
+  //
+  //   console.log(this._list);
+  //   const item_array = this._list;
+  //   const list = document.createElement("ul");
+  //   const el = document.querySelector(this._el);
+  //   let i;
+  //
+  //   for(i = 0; i < item_array.length; i++) {
+  //     let item = document.createElement("li");
+  //     item.append(item_array[i]);
+  //     list.append(item);
+  //   }
+  //   el.append(list);
+  // };
 
 };
 
