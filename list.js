@@ -17,9 +17,9 @@ class List extends View {
    * };
    *
    */
-  add() {
-    list(['apples','orange']);
-    console.log(list);
+  add(item, list_type) {
+    this._list.push(item);
+    this._refresh(list_type);
   };
 
   set list(list) {
@@ -29,6 +29,15 @@ class List extends View {
   get list() {
     return this._list;
   };
+
+  _refresh(list_type) {
+    this._template = "<${list_type}>";
+    for(i = 0; i < this._list.length; i++) {
+      this._template += "<li>${this._list[i]}</li>";
+    }
+    this._template += "</${list_type}>";
+    this._el.append = this._template;
+  }
 
   /* hint 2 :)
    *
