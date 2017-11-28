@@ -16,8 +16,6 @@ const myList = new List("Karen's List", 'body', list_arr);
 myView.render();
 myList.add('peanuts', 'ul');
 myList.render();
-//myList.createList();
-//myList2.createList();
 
 
 const l = 15;

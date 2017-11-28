@@ -33,8 +33,8 @@ class View {
   render() {
     const el = document.querySelector(this._el);
     if (el && this._template) {
-      //el.insertAdjacentHTML('beforeend', this._template);
-      el.innerHTML = this._template;
+      el.insertAdjacentHTML('beforeend', this._template);
+      //el.innerHTML = this._template;
     }
     return this;
   };

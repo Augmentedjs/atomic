@@ -17,8 +17,6 @@ const myList = new List("Karen's List", 'body', list_arr);
 myView.render();
 myList.add('peanuts', 'ul');
 myList.render();
-//myList.createList();
-//myList2.createList();
 
 
 const l = 15;
@@ -143,8 +141,8 @@ class View {
   render() {
     const el = document.querySelector(this._el);
     if (el && this._template) {
-      //el.insertAdjacentHTML('beforeend', this._template);
-      el.innerHTML = this._template;
+      el.insertAdjacentHTML('beforeend', this._template);
+      //el.innerHTML = this._template;
     }
     return this;
   };
