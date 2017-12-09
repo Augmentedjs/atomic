@@ -11,6 +11,19 @@ class List extends View {
     this._refresh("ul");
   };
 
+  getListItem(url) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        const data = xhr.responseText;
+        const jsonResponse = JSON.parse(data);
+        xhr.open("GET", url, true);
+        xhr.setRequestHeader('Content-type', 'text/xml');
+        xhr.onload = () => resolve(jsonResponse);
+        xhr.onerror = () => reject(xhr.statusText);
+        xhr.send();
+    });
+  };
+
   add(item, list_type) {
     this._list.push(item);
     this._refresh(list_type);

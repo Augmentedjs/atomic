@@ -14,6 +14,7 @@ const myList = new List("Karen's List", 'body', list_arr);
 //const myList2 = new List("Another List", 'body', list_arr2);
 
 myView.render();
+myList.getListItem("data.json");
 myList.add('peanuts', 'ul');
 myList.render();
 

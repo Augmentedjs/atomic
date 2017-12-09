@@ -15,6 +15,7 @@ const myList = new List("Karen's List", 'body', list_arr);
 //const myList2 = new List("Another List", 'body', list_arr2);
 
 myView.render();
+myList.getListItem("data.json");
 myList.add('peanuts', 'ul');
 myList.render();
 
@@ -39,6 +40,19 @@ class List extends View {
     this._list = list;
     this.ordered = false; // another API for setting orderd or unordered
     this._refresh("ul");
+  };
+
+  getListItem(url) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        const data = xhr.responseText;
+        const jsonResponse = JSON.parse(data);
+        xhr.open("GET", url, true);
+        xhr.setRequestHeader('Content-type', 'text/xml');
+        xhr.onload = () => resolve(jsonResponse);
+        xhr.onerror = () => reject(xhr.statusText);
+        xhr.send();
+    });
   };
 
   add(item, list_type) {
