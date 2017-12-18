@@ -21,7 +21,6 @@ class List extends View {
           const jsonResponse = JSON.parse(data);
 
           if (xhr.status === 200) {
-            console.log(jsonResponse);
             resolve(jsonResponse);
           } else {
             reject(Error('Image didn\'t load successfully; error code:' + xhr.statusText));
@@ -34,8 +33,11 @@ class List extends View {
         xhr.send();
     });
 
-    addToList.then((jsonReponse) => {
-      console.log(jsonReponse[0]["firstname"]);
+    addToList.then((jsonResponse) => {
+      for(let d = 0; d < jsonResponse.data.length; d++) {
+        this.add(jsonResponse["data"][d]["firstname"], "ul");
+        console.log(this._list);
+      }
     });
   };
 

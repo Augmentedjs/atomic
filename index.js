@@ -14,13 +14,13 @@ const myList = new List("Karen's List", 'body', list_arr);
 //const myList2 = new List("Another List", 'body', list_arr2);
 
 myView.render();
-myList.getListItem("data.json");
 myList.add('peanuts', 'ul');
+myList.getListItem("data.json");
 myList.render();
 
-
-const l = 15;
+const l = 22;
 let i = 0;
+
 
 for (i = 0; i < l; i++) {
  myList.add(`list num${i}`, "ul");

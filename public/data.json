@@ -1,1 +1,20 @@
-{ "name":"John", "age":30, "car":null }
+{
+	"data": [
+    {
+			"firstname": "John",
+			"lastname": "Doe",
+      "age": 30
+		},
+		{
+      "firstname": "David",
+			"lastname": "Bowie",
+      "age": 25
+		},
+		{
+      "firstname": "Delia",
+			"lastname": "Knight",
+      "age": 21
+		}
+	]
+
+}
