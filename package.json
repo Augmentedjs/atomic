@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jasmine-node ./test --verbose",
-    "build": "browserify ./index.js -o ./publc/bundle.js",
+    "build": "browserify ./index.js -o ./public/bundle.js",
     "start": "node server.js"
   },
   "repository": {
