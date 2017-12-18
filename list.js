@@ -14,12 +14,28 @@ class List extends View {
   getListItem(url) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
         const data = xhr.responseText;
-        const jsonResponse = JSON.parse(data);
-        xhr.open("GET", url, true);
-        xhr.setRequestHeader('Content-type', 'text/xml');
-        xhr.onload = () => resolve(jsonResponse);
-        xhr.onerror = () => reject(xhr.statusText);
+        //const jsonResponse = JSON.parse(data);
+
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+          // If successful, resolve the promise by passing back the request response
+            console.log(data);
+            resolve(xhr.response);
+          } else {
+          // If it fails, reject the promise with a error message
+            reject(Error('Image didn\'t load successfully; error code:' + xhr.statusText));
+          }
+        };
+
+        //xhr.setRequestHeader('Content-type', 'text/xml');
+        //xhr.onload = () => resolve(jsonResponse);
+        xhr.onerror = function() {
+      // Also deal with the case when the entire request fails to begin with
+      // This is probably a network error, so reject the promise with an appropriate message
+          reject(Error('There was a network error.'));
+        };
         xhr.send();
     });
   };
