@@ -15,14 +15,15 @@ class List extends View {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open("GET", url);
-        const data = xhr.responseText;
-        //const jsonResponse = JSON.parse(data);
 
         xhr.onload = function() {
+          const data = xhr.response;
+          const jsonResponse = JSON.parse(data);
+
           if (xhr.status === 200) {
           // If successful, resolve the promise by passing back the request response
-            console.log(data);
-            resolve(xhr.response);
+            console.log(jsonResponse);
+            resolve(jsonResponse);
           } else {
           // If it fails, reject the promise with a error message
             reject(Error('Image didn\'t load successfully; error code:' + xhr.statusText));
