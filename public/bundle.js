@@ -43,32 +43,30 @@ class List extends View {
   };
 
   getListItem(url) {
-    return new Promise((resolve, reject) => {
+    const addToList = new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open("GET", url);
 
-        xhr.onload = function() {
+        xhr.onload = () => {
           const data = xhr.response;
           const jsonResponse = JSON.parse(data);
 
           if (xhr.status === 200) {
-          // If successful, resolve the promise by passing back the request response
             console.log(jsonResponse);
             resolve(jsonResponse);
           } else {
-          // If it fails, reject the promise with a error message
             reject(Error('Image didn\'t load successfully; error code:' + xhr.statusText));
           }
         };
 
-        //xhr.setRequestHeader('Content-type', 'text/xml');
-        //xhr.onload = () => resolve(jsonResponse);
-        xhr.onerror = function() {
-      // Also deal with the case when the entire request fails to begin with
-      // This is probably a network error, so reject the promise with an appropriate message
+        xhr.onerror = () => {
           reject(Error('There was a network error.'));
         };
         xhr.send();
+    });
+
+    addToList.then((jsonReponse) => {
+      console.log(jsonReponse[0]["firstname"]);
     });
   };
 
