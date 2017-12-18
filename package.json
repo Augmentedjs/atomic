@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jasmine-node ./test --verbose",
-    "build": "browserify index.js -o bundle.js"
+    "build": "browserify ./index.js -o ./publc/bundle.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,10 @@
     "jasmine-node": "^2.0.0",
     "browserify": "^14.5.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
   "bugs": {
     "url": "https://github.com/augmentedjs/atomic/issues"
   },
