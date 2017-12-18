@@ -11,12 +11,9 @@ const list_arr2 = ["oranges", "grapes", "kiwis"];
 
 const myView = new View(CONSTANTS.NAME, 'body', CONSTANTS.TEMPLATE);
 const myList = new List("Karen's List", 'body', list_arr);
-//const myList2 = new List("Another List", 'body', list_arr2);
 
-myView.render();
 myList.add('peanuts', 'ul');
 myList.getListItem("data.json");
-myList.render();
 
 const l = 22;
 let i = 0;
@@ -25,4 +22,3 @@ let i = 0;
 for (i = 0; i < l; i++) {
  myList.add(`list num${i}`, "ul");
 }
-myList.render();

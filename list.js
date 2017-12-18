@@ -36,8 +36,8 @@ class List extends View {
     addToList.then((jsonResponse) => {
       for(let d = 0; d < jsonResponse.data.length; d++) {
         this.add(jsonResponse["data"][d]["firstname"], "ul");
-        console.log(this._list);
       }
+      this.render();
     });
   };
 
